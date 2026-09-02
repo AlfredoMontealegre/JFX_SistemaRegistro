@@ -24,7 +24,6 @@ public class DistribuidoraController {
     private final ObservableList<Trabajador> datosTabla = FXCollections.observableArrayList();
     private Trabajador trabajadorEnEdicion = null;
 
-    // --- CONTROLES DEL FORMULARIO ---
     @FXML private TextField txtNombres;
     @FXML private TextField txtApellidos;
     @FXML private TextField txtUsuario;
@@ -40,13 +39,13 @@ public class DistribuidoraController {
     @FXML private CheckBox chkCapacitaciones;
     @FXML private ImageView imgInstitucional;
 
-    // --- BOTONES ---
+
     @FXML private Button btnGuardar;
     @FXML private Button btnActualizar;
     @FXML private Button btnLimpiar;
     @FXML private Button btnEliminar;
 
-    // --- TABLA Y COLUMNAS ---
+
     @FXML private TableView<Trabajador> tblTrabajadores;
     @FXML private TableColumn<Trabajador, String> colNombreCompleto;
     @FXML private TableColumn<Trabajador, String> colCargo;
@@ -125,7 +124,7 @@ public class DistribuidoraController {
 
         tblTrabajadores.setItems(datosTabla);
 
-        // --- CONTEXT MENU SOBRE TABLEVIEW ---
+
         MenuItem miEditar = new MenuItem("Editar");
         MenuItem miEliminar = new MenuItem("Eliminar");
 
@@ -139,17 +138,13 @@ public class DistribuidoraController {
     private void configurarEventosTabla() {
         if (tblTrabajadores == null) return;
 
-        // Doble clic en una fila para cargar datos
+
         tblTrabajadores.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount() == 2) {
                 cargarDatosSeleccionados();
             }
         });
     }
-
-    // =========================================================
-    // EVENTOS ACTIONEVENT (Botones, Toolbar, Menús)
-    // =========================================================
 
     @FXML
     public void btnGuardarOnAction(ActionEvent event) {
@@ -232,10 +227,6 @@ public class DistribuidoraController {
         eliminarTrabajador();
     }
 
-    // =========================================================
-    // EVENTOS MOUSEEVENT Y KEYEVENT
-    // =========================================================
-
     @FXML
     public void tblTrabajadoresOnMouseClicked(MouseEvent event) {
         if (event.getClickCount() == 2) {
@@ -256,10 +247,6 @@ public class DistribuidoraController {
         }
     }
 
-    // =========================================================
-    // EVENTOS DE MENÚ (MenuBar)
-    // =========================================================
-
     @FXML
     public void menuNuevoOnAction(ActionEvent event) {
         btnLimpiarOnAction(event);
@@ -275,10 +262,6 @@ public class DistribuidoraController {
         mostrarAlerta(Alert.AlertType.INFORMATION, "Acerca de",
                 "Distribuidora El Güegüense\nSistema de Gestión y Registro de Colaboradores\nVersión 1.0 - 2026\nDesarrollado con JavaFX.");
     }
-
-    // =========================================================
-    // MÉTODOS DE SOPORTE Y VALIDACIONES
-    // =========================================================
 
     private void cargarDatosSeleccionados() {
         if (tblTrabajadores == null) return;
@@ -309,7 +292,7 @@ public class DistribuidoraController {
             }
         }
 
-        // Marcar los beneficios
+
         String ben = seleccionado.getBeneficios() != null ? seleccionado.getBeneficios() : "";
         if (chkSeguroMedico != null) chkSeguroMedico.setSelected(ben.contains("Seguro Médico"));
         if (chkViaticos != null) chkViaticos.setSelected(ben.contains("Viáticos"));
@@ -344,12 +327,12 @@ public class DistribuidoraController {
     }
 
     private boolean validarFormulario() {
-        if (txtNombres == null || txtNombres.getText() == null || txtNombres.getText().trim().isEmpty()) {
+        if (txtNombres.getText() == null || txtNombres.getText().trim().isEmpty()) {
             mostrarAlerta(Alert.AlertType.ERROR, "Campo Vacío", "Debe ingresar los nombres del colaborador.");
             return false;
         }
 
-        if (txtApellidos == null || txtApellidos.getText() == null || txtApellidos.getText().trim().isEmpty()) {
+        if (txtApellidos.getText() == null || txtApellidos.getText().trim().isEmpty()) {
             mostrarAlerta(Alert.AlertType.ERROR, "Campo Vacío", "Debe ingresar los apellidos del colaborador.");
             return false;
         }
@@ -389,7 +372,6 @@ public class DistribuidoraController {
             return false;
         }
 
-        // VALIDACIÓN DE FECHA: No puede ser posterior a la fecha actual
         if (dpFechaContratacion.getValue().isAfter(LocalDate.now())) {
             mostrarAlerta(Alert.AlertType.ERROR, "Fecha Inválida",
                     "La fecha de contratación no puede ser posterior a la fecha actual (" + LocalDate.now() + ").");
