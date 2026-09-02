@@ -1,4 +1,10 @@
 package ni.uam.edu.distribuidoragueguense.Interfaces;
 
-public interface CRUD {
+import java.util.List;
+
+public interface CRUD<T> {
+    void agregar(T entidad);
+    void actualizar(T entidad);
+    void eliminar(T entidad);
+    List<T> obtenerRegistros();
 }
