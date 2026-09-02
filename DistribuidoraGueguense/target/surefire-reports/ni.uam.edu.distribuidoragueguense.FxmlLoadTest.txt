@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: ni.uam.edu.distribuidoragueguense.FxmlLoadTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec <<< FAILURE!
+ni.uam.edu.distribuidoragueguense.FxmlLoadTest.testFxmlLoads()  Time elapsed: 0.03 sec  <<< FAILURE!
+java.lang.IllegalStateException: Toolkit not initialized
+	at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:436)
+	at com.sun.javafx.application.PlatformImpl.runLater(PlatformImpl.java:431)
+	at javafx.application.Platform.runLater(Platform.java:168)
+	at ni.uam.edu.distribuidoragueguense.FxmlLoadTest.testFxmlLoads(FxmlLoadTest.java:34)
+

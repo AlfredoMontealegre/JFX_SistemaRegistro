@@ -1,0 +1,4 @@
+--patch-module
+ni.uam.edu.distribuidoragueguense=_
+--add-reads
+ni.uam.edu.distribuidoragueguense=ALL-UNNAMED
